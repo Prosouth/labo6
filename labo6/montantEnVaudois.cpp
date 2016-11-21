@@ -23,17 +23,17 @@ using namespace std;
 
 using namespace std;
 
-int getBloc1 (double nombre)
+int getMilliers (double nombre)
 {
    return (int)(nombre / 1000); //donne la partie milier
 }
 
-int getBloc2 (double nombre)
+int getCentaines (double nombre)
 {
    return ((int)nombre)% 1000; //donne la partie centaine
 }
 
-int getBloc3 (double nombre)
+int getDecimales (double nombre)
 {
    return (int)round(nombre*100) % 100; //donne la partie décimale
 }
@@ -141,49 +141,49 @@ string dizaineToString(int nombre)
    string montantEnVaudois(double montant)
    {
       string resultat = "";
-      int bloc1 = getBloc1(montant);
-      int bloc2 = getBloc2(montant);
-      int bloc3 = getBloc3(montant);
+      int milliers = getMilliers(montant);
+      int centaines = getCentaines(montant);
+      int decimales = getDecimales(montant);
 
-      string bloc1String = blocToString(bloc1);
-      string bloc2String = blocToString(bloc2);
-      string bloc3String = blocToString(bloc3);
+      string milliersString = blocToString(milliers);
+      string centainesString = blocToString(centaines);
+      string decimalesString = blocToString(decimales);
       
-      if(bloc1 == 1)
+      if(milliers == 1)
       {
          resultat += "mille ";
       }
-      else if(bloc1 != 0)
+      else if(milliers != 0)
       {
-         resultat += bloc1String + " mille ";
+         resultat += milliersString + " mille ";
       }
-      resultat += bloc2String;
-      if((bloc1 == 0) && (bloc2 == 0) && (bloc3 == 0))
+      resultat += centainesString;
+      if((milliers == 0) && (centaines == 0) && (decimales == 0))
       {
          resultat += "zero franc";
       }
       else 
       {
-         if((bloc1 != 0) || (bloc2 != 0))
+         if((milliers != 0) || (centaines != 0))
          {
             resultat += " franc";
          }
       }
-      if((bloc1 != 0) || (bloc2 > 1))
+      if((milliers != 0) || (centaines > 1))
       {
          resultat += "s";
       }
       
-      if(bloc3 != 0)
+      if(decimales != 0)
       {
-         if (bloc1 != 0 || bloc2 != 0)
+         if (milliers != 0 || centaines != 0)
          {
             resultat += " et ";
          }
          
-         resultat += bloc3String + " centime";
+         resultat += decimalesString + " centime";
          
-         if (bloc3 != 1)
+         if (decimales != 1)
          {
             resultat += "s";
          }
