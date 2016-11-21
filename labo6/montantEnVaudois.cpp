@@ -67,16 +67,16 @@ string dizaineToString(int nombre)
    {
       switch(nombre)
       {
-          case 0 : return ""; break;
-		  case 1 : return "dix"; break;
-		  case 2 : return "vingt"; break;
-		  case 3 : return "trente"; break;
-		  case 4 : return "quarante"; break;
-		  case 5 : return "cinquante"; break;
-		  case 6 : return "soixante"; break;
-		  case 7 : return "septante"; break;
-		  case 8 : return "huitante"; break;
-		  case 9 : return "nonante"; break;
+         case 0 : return ""; break;
+         case 1 : return "dix"; break;
+         case 2 : return "vingt"; break;
+         case 3 : return "trente"; break;
+         case 4 : return "quarante"; break;
+         case 5 : return "cinquante"; break;
+         case 6 : return "soixante"; break;
+         case 7 : return "septante"; break;
+         case 8 : return "huitante"; break;
+         case 9 : return "nonante"; break;
       }
    }
    
