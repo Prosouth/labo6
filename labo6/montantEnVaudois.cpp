@@ -107,8 +107,8 @@ string dizaineToString(int nombre)
       {
          int dizaine = reste / 10;
          int unite = reste % 10;
-         string dizStr = dizaineToString(dizaine);
-         string uniStr = uniteToString(unite);
+         string dizaineString = dizaineToString(dizaine);
+         string uniteString = uniteToString(unite);
          
          if(dizaine != 0)
          {
@@ -116,21 +116,21 @@ string dizaineToString(int nombre)
             {
                if(unite == 1)
                {
-                  resultat += dizStr + " et " + uniStr;
+                  resultat += dizaineString + " et " + uniteString;
                }
                else
                {
-                  resultat += dizStr + "-" + uniStr;
+                  resultat += dizaineString + "-" + uniteString;
                }
             }
             else
             {
-               resultat += dizStr;
+               resultat += dizaineString;
             }
          }
          else 
          {
-            resultat += uniStr;
+            resultat += uniteString;
          }
       }
       else
