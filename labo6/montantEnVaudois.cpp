@@ -156,30 +156,30 @@ string dizaineToString(int nombre)
       {
          resultat += "mille ";
       }
-      else if(milliers != 0)
+      else if(milliers)
       {
          resultat += milliersString + " mille ";
       }
       resultat += centainesString;
-      if((milliers == 0) && (centaines == 0) && (decimales == 0))
+      if((!milliers) && (!centaines) && (!decimales))
       {
          resultat += "zero franc";
       }
       else 
       {
-         if((milliers != 0) || (centaines != 0))
+         if((milliers) || (centaines))
          {
             resultat += " franc";
          }
       }
-      if((milliers != 0) || (centaines > 1))
+      if((milliers) || (centaines > 1))
       {
          resultat += "s";
       }
       
-      if(decimales != 0)
+      if(decimales)
       {
-         if (milliers != 0 || centaines != 0)
+         if (milliers || centaines)
          {
             resultat += " et ";
          }
