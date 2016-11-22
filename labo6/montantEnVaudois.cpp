@@ -1,43 +1,27 @@
 #include <string>
-
-using namespace std;
-
-/**
- \brief Traduit des nombres réels en prix exprimés en vaudois
- \param[in] montant un réel compris entre 0 et 999999.99 CHF.
- \return une chaine de caractères indiquant en vaudois le prix
- en francs et centimes.
- \details Exemples:
- 12.30  -> "douze francs et trente centimes"
- 200.01 -> "deux cents francs et un centime"
- 180    -> "cent huitante francs"
- 1.80   -> "un franc et huitante centimes"
- 0.20   -> "vingt centimes"
- 0      -> "zéro franc"
- */
 #include <cstdlib>
 #include <cmath>
 #include <iostream>
-#include <string>
+#include <limits>
 
 using namespace std;
 
 int getMilliers (double nombre)
 {
-   return (int)(nombre / 1000); //donne la partie milier
+   return (int)(nombre / 1000); // retourne le nombre de milliers
 }
 
 int getCentaines (double nombre)
 {
-   return ((int)nombre)% 1000; //donne la partie centaine
+   return ((int)nombre)% 1000; // retourne le nombre de centaines
 }
 
 int getDecimales (double nombre)
 {
-   return (int)round(nombre*100) % 100; //donne la partie décimale
+   return (int)round(nombre*100) % 100; // retourne la partie décimale
 }
 
-//Cette fonction retourne la représentation française d'un chiffre non nul
+// Cette fonction retourne la représentation française d'un chiffre non nul
 string uniteToString(int chiffre)
 {
    switch(chiffre)
@@ -61,7 +45,7 @@ string uniteToString(int chiffre)
    }
 }
    
-//cette fonction retourne la representation francaise d'un chiffre representant une dizaine. 
+// Cette fonction retourne la representation francaise d'un chiffre representant une dizaine. 
 string dizaineToString(int nombre)
    {
       switch(nombre)
@@ -110,9 +94,9 @@ string dizaineToString(int nombre)
          string dizaineString = dizaineToString(dizaine);
          string uniteString = uniteToString(unite);
          
-         if(dizaine != 0)
+         if(dizaine)
          {
-            if(unite != 0)
+            if(unite)
             {
                if(unite == 1)
                {
@@ -141,6 +125,20 @@ string dizaineToString(int nombre)
       return resultat;
    }
 
+   
+   /**
+    \brief Traduit des nombres réels en prix exprimés en vaudois
+    \param[in] montant un réel compris entre 0 et 999999.99 CHF.
+    \return une chaine de caractères indiquant en vaudois le prix
+    en francs et centimes.
+    \details Exemples:
+    12.30  -> "douze francs et trente centimes"
+    200.01 -> "deux cents francs et un centime"
+    180    -> "cent huitante francs"
+    1.80   -> "un franc et huitante centimes"
+    0.20   -> "vingt centimes"
+    0      -> "zéro franc"
+    */
    string montantEnVaudois(double montant)
    {
       string resultat = "";
