@@ -28,11 +28,10 @@ int main()
 {
     double d;
     
-    while( cin >> d ) 
+    while(cin >> d) 
     {
         cout << montantEnVaudois(d) << endl;
     }   
 
    return EXIT_SUCCESS;
 }
-
