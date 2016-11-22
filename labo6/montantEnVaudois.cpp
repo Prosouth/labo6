@@ -18,7 +18,6 @@ using namespace std;
 #include <cstdlib>
 #include <cmath>
 #include <iostream>
-#include <iomanip>
 #include <string>
 
 using namespace std;
@@ -91,9 +90,13 @@ string dizaineToString(int nombre)
       {
          resultat += "cent";
       }
-      else if(centaine != 0)
+      else if(centaine != 0 && reste == 0 && centaine < 10)
       {
-         resultat += uniteToString(centaine) + " cent"; // accord cents si franc direct après
+         resultat += uniteToString(centaine) + " cents";    
+      }
+      else if(centaine != 0 && reste != 0)
+      {
+         resultat += uniteToString(centaine) + " cent"; 
       }
       if((reste != 0) && (centaine != 0))
       {
