@@ -63,7 +63,7 @@ string dizaineToString(int nombre)
       }
    }
    
-   string blocToString(int bloc)
+   string blocToString(int bloc, bool milliers)
    {
       string resultat = "";
       int reste = bloc % 100;
@@ -74,11 +74,11 @@ string dizaineToString(int nombre)
       {
          resultat += "cent";
       }
-      else if(centaine != 0 && reste == 0 && centaine < 10)
+      else if(centaine != 0 && reste == 0 && centaine < 10 && !milliers)
       {
          resultat += uniteToString(centaine) + " cents";    
       }
-      else if(centaine != 0 && reste != 0)
+      else if(centaine != 0 && reste != 0 || milliers)
       {
          resultat += uniteToString(centaine) + " cent"; 
       }
@@ -146,9 +146,9 @@ string dizaineToString(int nombre)
       int centaines = getCentaines(montant);
       int decimales = getDecimales(montant);
 
-      string milliersString = blocToString(milliers);
-      string centainesString = blocToString(centaines);
-      string decimalesString = blocToString(decimales);
+      string milliersString = blocToString(milliers, true);
+      string centainesString = blocToString(centaines, false);
+      string decimalesString = blocToString(decimales, false);
       
       if(milliers == 1)
       {
