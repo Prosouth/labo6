@@ -13,12 +13,12 @@ int getMilliers (const double nombre)
 
 int getCentaines (const double nombre)
 {
-   return ((int)nombre)% 1000; // retourne le nombre de centaines
+   return ((int)nombre) % 1000; // retourne le nombre de centaines
 }
 
 int getDecimales (const double nombre)
 {
-   return (int)round(nombre*100) % 100; // retourne la partie décimale
+   return (int)round(nombre * 100) % 100; // retourne la partie décimale
 }
 
 // Cette fonction retourne la représentation française d'un chiffre non nul
@@ -65,7 +65,7 @@ string dizaineToString(const int nombre)
       }
    }
    
-   string blocToString(const int bloc, bool milliers)
+   string blocToString(const int bloc, const bool milliers)
    {
       string resultat = "";
       int reste = bloc % 100;

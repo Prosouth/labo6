@@ -32,7 +32,8 @@ double saisieUtilisateur(const int valMin, const int valMax, double& valeur);
 int main()
 {
     double d;
-    montantEnVaudois(saisieUtilisateur(BORNE_INFERIEURE, BORNE_SUPERIEURE,d));
+    cout << montantEnVaudois(saisieUtilisateur(BORNE_INFERIEURE, BORNE_SUPERIEURE,d))
+         << endl;
 
    return EXIT_SUCCESS;
 }
