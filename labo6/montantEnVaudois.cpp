@@ -41,7 +41,8 @@ string uniteToString(int chiffre)
       case 13 : return "treize"; break;
       case 14 : return "quatorze"; break;
       case 15 : return "quinze"; break;
-      case 16 : return "seize"; break;      
+      case 16 : return "seize"; break;  
+      default: return "Erreur";
    }
 }
    
@@ -60,6 +61,7 @@ string dizaineToString(int nombre)
          case 7 : return "septante"; break;
          case 8 : return "huitante"; break;
          case 9 : return "nonante"; break;
+         default: return "Erreur";
       }
    }
    
@@ -74,11 +76,11 @@ string dizaineToString(int nombre)
       {
          resultat += "cent";
       }
-      else if(centaine != 0 && reste == 0 && centaine < 10 && !milliers)
+      else if(centaine != 0 && !reste && centaine < 10 && !milliers)
       {
          resultat += uniteToString(centaine) + " cents";    
       }
-      else if(centaine != 0 && reste != 0 || milliers)
+      else if(centaine != 0 && reste != 0 )
       {
          resultat += uniteToString(centaine) + " cent"; 
       }

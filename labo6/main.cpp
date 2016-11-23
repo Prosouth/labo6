@@ -27,19 +27,18 @@ const double BORNE_INFERIEURE = 0;
 const double BORNE_SUPERIEURE = 999999.99;
 
 string montantEnVaudois(double montant);
-double saisieUtilisateur(int valMin, int valMax);
+double saisieUtilisateur(int valMin, int valMax, double& valeur);
 
 int main()
 {
     double d;
-    saisieUtilisateur(BORNE_INFERIEURE, BORNE_SUPERIEURE);
+    montantEnVaudois(saisieUtilisateur(BORNE_INFERIEURE, BORNE_SUPERIEURE,d));
 
    return EXIT_SUCCESS;
 }
 
-double saisieUtilisateur(int valMin, int valMax)
+double saisieUtilisateur(int valMin, int valMax, double& valeur)
 {
-   double valeur;
    bool entree_invalide = false;   
    
    do
