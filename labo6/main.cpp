@@ -26,8 +26,8 @@ using namespace std;
 const double BORNE_INFERIEURE = 0;
 const double BORNE_SUPERIEURE = 999999.99;
 
-string montantEnVaudois(double montant);
-double saisieUtilisateur(int valMin, int valMax, double& valeur);
+string montantEnVaudois(const double montant);
+double saisieUtilisateur(const int valMin, const int valMax, double& valeur);
 
 int main()
 {
@@ -37,7 +37,7 @@ int main()
    return EXIT_SUCCESS;
 }
 
-double saisieUtilisateur(int valMin, int valMax, double& valeur)
+double saisieUtilisateur(const int valMin, const int valMax, double& valeur)
 {
    bool entree_invalide = false;   
    
