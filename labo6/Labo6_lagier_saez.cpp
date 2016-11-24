@@ -223,14 +223,18 @@ string blocToString(const int bloc, const bool milliers)
       string dizaineString = dizaineToString(dizaine);
       string uniteString = uniteToString(unite);
 
+      // s'il y a des dizaines, on les traite
       if(dizaine)
       {
+         // s'il reste des unités
          if(unite)
          {
+            // s'il le reste % 10 == 1, on écrit la dizaine avec et
             if(unite == 1)
             {
                resultat += dizaineString + " et " + uniteString;
             }
+            // sinon on écrit avec un trait d'union.
             else
             {
                resultat += dizaineString + "-" + uniteString;
