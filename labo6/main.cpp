@@ -26,8 +26,11 @@
 using namespace std;
 
 // Constantes
-const double BORNE_INFERIEURE = 0;
-const double BORNE_SUPERIEURE = 999999.99;
+const double BORNE_INFERIEURE = 0,
+             BORNE_SUPERIEURE = 999999.99,
+             MILLE = 1000,
+             CENT = 100,
+             DIX = 10;
 
 
 /**
@@ -115,18 +118,18 @@ int main()
 
 int getMilliers (const double nombre)
 {
-   return (int)(nombre / 1000); // retourne le nombre de milliers
+   return (int)(nombre / MILLE); // retourne le nombre de milliers
 }
 
 
 int getCentaines (const double nombre)
 {
-   return ((int)nombre) % 1000; // retourne le nombre de centaines
+   return ((int)nombre) % MILLE; // retourne le nombre de centaines
 }
 
 int getDecimales (const double nombre)
 {
-   return (int)round(nombre * 100) % 100; // retourne la partie décimale
+   return (int)round(nombre * CENT) % CENT; // retourne la partie décimale
 }
 
 string uniteToString(const int chiffre)
@@ -174,8 +177,8 @@ string dizaineToString(const int nombre)
 string blocToString(const int bloc, const bool milliers)
 {
    string resultat = "";
-   int reste = bloc % 100;
-   int centaine = bloc / 100;
+   int reste = bloc % CENT;
+   int centaine = bloc / CENT;
 
    //on ecrit les centaines
    if(centaine == 1)
@@ -197,8 +200,8 @@ string blocToString(const int bloc, const bool milliers)
    //on ecrit les dizaines et les unités
    if(reste < 11 || reste > 16)
    {
-      int dizaine = reste / 10;
-      int unite = reste % 10;
+      int dizaine = reste / DIX;
+      int unite = reste % DIX;
       string dizaineString = dizaineToString(dizaine);
       string uniteString = uniteToString(unite);
 
