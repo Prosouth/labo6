@@ -52,8 +52,8 @@ string montantEnVaudois(const double MONTANT);
 /**
  Demande les valeurs à l'utilisateur et verifie la saisie
  
- @param valMin(entier) définit le nombre mimimum à entrer
- @param valMax(entier) définit le nombre maximum à entrer
+ @param VALMIN(entier) définit le nombre mimimum à entrer
+ @param VALMAX(entier) définit le nombre maximum à entrer
  @param valeur(double) en référence qui sera la valeur à traiter
  @return la saisie correcte en double
  */
@@ -62,7 +62,7 @@ double saisieUtilisateur(const int VALMAX, const int VALMIN, double& valeur);
 /**
  Retourne la partie des milliers d'un nombre
  
- @param reçoit le nombre dont on veut extraire les milliers
+ @param NOMBRE reçoit le nombre dont on veut extraire les milliers
  @return la partie décimale d'un nombre en double constant
  */
 int getMilliers (const double NOMBRE);
@@ -70,7 +70,7 @@ int getMilliers (const double NOMBRE);
 /**
  Retourne la partie des centaines d'un nombre
  
- @param reçoit le nombre dont on veut extraire les centaines
+ @param NOMBRE reçoit le nombre dont on veut extraire les centaines
  @return la partie décimale d'un nombre en double constant
  */
 int getCentaines (const double NOMBRE);
@@ -79,7 +79,7 @@ int getCentaines (const double NOMBRE);
 /**
  Retourne la partie décimale d'un nombre
  
- @param reçoit le nombre dont on veut extraire la partie décimale
+ @param NOMBRE reçoit le nombre dont on veut extraire la partie décimale
  @return la partie décimale d'un nombre en double constant
  */
 int getDecimales (const double NOMBRE);
@@ -89,8 +89,8 @@ int getDecimales (const double NOMBRE);
  Retourne une chaine de caractères en français quand elle reçoit un nombre allant
  * de 0 à 9 et de 11 à 16. Ce sont les bases du comptage et les cas particuliers.
  
- @param reçoit le nombre(int) entre 1 et 16, 10 exclu dont on veut récupérer sa chaine
- *      de caractères.
+ @param CHIFFREreçoit le nombre(int) entre 1 et 16, 10 exclu dont on veut récupérer sa 
+ *      chaîne de caractères.
  @return la chaine de caractère du chiffre reçu en paramètre.
  */
 string uniteToString(const int CHIFFRE);
@@ -98,7 +98,8 @@ string uniteToString(const int CHIFFRE);
 /**
  Fonction qui traite un nombre et retourne sa chaine de caractère en dizaine
  
- @param reçoit le nombre(int) encodé qui correspond à sa valeur en dizaine(voir details)
+ @param NOMBREreçoit le nombre(int) encodé qui correspond à sa valeur en dizaine
+ *      (voir details)
  @return la dizaine correspondant sous forme de string.
  \details
  * Exemple: s'il reçoit 1, il retourne dix. 2 => vingt et etc...
@@ -107,10 +108,10 @@ string dizaineToString(const int NOMBRE);
 
 /**
  Fonction principale qui écrit les accords de centaines ainsi que les mots de liaisons
- * tels que "et" ainsi que le trait d'union
+ tels que "et" ainsi que le trait d'union
  *  
- @param reçoit le bloc de chiffre que l'on veut traiter
- @param reçoit un boolean pour savoir si c'est un millier qu'on traite ou pas,
+ @param BLOC reçoit le bloc de chiffre que l'on veut traiter
+ @param MILLIERS reçoit un boolean pour savoir si c'est un millier qu'on traite ou pas,
  * nous avons dû l'introduire afin de ne pas faire l'accord des centaines lorsque
  * que c'est des centaines de milliers.
  @return la chaine de caractère traitée avec les mots de liaisons.
