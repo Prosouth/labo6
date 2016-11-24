@@ -46,7 +46,7 @@ const int    MILLE = 1000,
     0.20   -> "vingt centimes"
     0      -> "zéro franc"
     */
-string montantEnVaudois(const double montant);
+string montantEnVaudois(const double MONTANT);
 
 
 /**
@@ -57,7 +57,7 @@ string montantEnVaudois(const double montant);
  @param valeur(double) en référence qui sera la valeur à traiter
  @return la saisie correcte en double
  */
-double saisieUtilisateur(const int valMin, const int valMax, double& valeur);
+double saisieUtilisateur(const int VALMAX, const int VALMIN, double& valeur);
 
 /**
  Retourne la partie des milliers d'un nombre
@@ -65,7 +65,7 @@ double saisieUtilisateur(const int valMin, const int valMax, double& valeur);
  @param reçoit le nombre dont on veut extraire les milliers
  @return la partie décimale d'un nombre en double constant
  */
-int getMilliers (const double nombre);
+int getMilliers (const double NOMBRE);
 
 /**
  Retourne la partie des centaines d'un nombre
@@ -73,7 +73,7 @@ int getMilliers (const double nombre);
  @param reçoit le nombre dont on veut extraire les centaines
  @return la partie décimale d'un nombre en double constant
  */
-int getCentaines (const double nombre);
+int getCentaines (const double NOMBRE);
 
 
 /**
@@ -82,7 +82,7 @@ int getCentaines (const double nombre);
  @param reçoit le nombre dont on veut extraire la partie décimale
  @return la partie décimale d'un nombre en double constant
  */
-int getDecimales (const double nombre);
+int getDecimales (const double NOMBRE);
 
 
 /**
@@ -93,7 +93,7 @@ int getDecimales (const double nombre);
  *      de caractères.
  @return la chaine de caractère du chiffre reçu en paramètre.
  */
-string uniteToString(const int chiffre);
+string uniteToString(const int CHIFFRE);
 
 /**
  Fonction qui traite un nombre et retourne sa chaine de caractère en dizaine
@@ -103,7 +103,7 @@ string uniteToString(const int chiffre);
  \details
  * Exemple: s'il reçoit 1, il retourne dix. 2 => vingt et etc...
  */
-string dizaineToString(const int nombre);
+string dizaineToString(const int NOMBRE);
 
 /**
  Fonction principale qui écrit les accords de centaines ainsi que les mots de liaisons
@@ -115,7 +115,7 @@ string dizaineToString(const int nombre);
  * que c'est des centaines de milliers.
  @return la chaine de caractère traitée avec les mots de liaisons.
  */
-string blocToString(const int bloc, const bool milliers);
+string blocToString(const int BLOC, const bool MILLIERS);
 
 
 int main()
@@ -127,25 +127,25 @@ int main()
    return EXIT_SUCCESS;
 }
 
-int getMilliers (const double nombre)
+int getMilliers (const double NOMBRE)
 {
-   return (int)(nombre / MILLE); // retourne le nombre de milliers
+   return (int)(NOMBRE / MILLE); // retourne le nombre de milliers
 }
 
 
-int getCentaines (const double nombre)
+int getCentaines (const double NOMBRE)
 {
-   return ((int)nombre) % MILLE; // retourne le nombre de centaines
+   return ((int)NOMBRE) % MILLE; // retourne le nombre de centaines
 }
 
-int getDecimales (const double nombre)
+int getDecimales (const double NOMBRE)
 {
-   return (int)round(nombre * CENT) % CENT; // retourne la partie décimale
+   return (int)round(NOMBRE * CENT) % CENT; // retourne la partie décimale
 }
 
-string uniteToString(const int chiffre)
+string uniteToString(const int CHIFFRE)
 {
-   switch(chiffre)
+   switch(CHIFFRE)
    {
       case 0 : return ""; break;
       case 1 : return "un"; break;
@@ -167,9 +167,9 @@ string uniteToString(const int chiffre)
    }
 }
 
-string dizaineToString(const int nombre)
+string dizaineToString(const int NOMBRE)
 {
-   switch(nombre)
+   switch(NOMBRE)
    {
       case 0 : return ""; break;
       case 1 : return "dix"; break;
@@ -186,11 +186,11 @@ string dizaineToString(const int nombre)
 }
 
 
-string blocToString(const int bloc, const bool milliers)
+string blocToString(const int BLOC, const bool MILLIERS)
 {
    string resultat = "";
-   int reste = bloc % CENT;
-   int centaine = bloc / CENT;
+   int reste = BLOC % CENT;
+   int centaine = BLOC / CENT;
 
    // s'il n'y a qu'une centaine, on écrit cent 
    if(centaine == 1)
@@ -199,13 +199,13 @@ string blocToString(const int bloc, const bool milliers)
    }
    // sinon si la centaines est plus petite que 10 et qu'il y'a pas de reste et qu'on
    // est pas dans les milliers, on accorde cents
-   else if(centaine && !reste && centaine < 10 && !milliers)
+   else if(centaine && !reste && centaine < 10 && !MILLIERS)
    {
       resultat += uniteToString(centaine) + " cents";    
    }
    // sinon si les on est dans les milliers OU qu'on a une centaine avec un reste,
    // on écrit cent sans accorder
-   else if((milliers && centaine) || (centaine && reste))
+   else if((MILLIERS && centaine) || (centaine && reste))
    {
       resultat += uniteToString(centaine) + " cent"; 
    }
@@ -261,12 +261,12 @@ string blocToString(const int bloc, const bool milliers)
    return resultat;
 }
 
-string montantEnVaudois(const double montant)
+string montantEnVaudois(const double MONTANT)
 {
    string resultat = "";
-   int milliers = getMilliers(montant);
-   int centaines = getCentaines(montant);
-   int decimales = getDecimales(montant);
+   int milliers = getMilliers(MONTANT);
+   int centaines = getCentaines(MONTANT);
+   int decimales = getDecimales(MONTANT);
 
    string milliersString = blocToString(milliers, true);
    string centainesString = blocToString(centaines, false);
@@ -322,18 +322,18 @@ string montantEnVaudois(const double montant)
 }
 
 
-double saisieUtilisateur(const int valMin, const int valMax, double& valeur)
+double saisieUtilisateur(const int VALMIN, const int VALMAX, double& valeur)
 {
    bool entree_invalide = false;   
    
    do
    {
       // entrée est invalide si valeur non attendue ou dépasse les bornes
-      entree_invalide = ((not(cin >> valeur) || valeur <  valMin ||  valeur > valMax));
+      entree_invalide = ((not(cin >> valeur) || valeur <  VALMIN ||  valeur > VALMAX));
       if (entree_invalide) // si entrée est invalide, on affiche erreur, vide buffer et affiche question
       {
          cout << "Votre valeur est fausse, veuillez saisir une valeur entre " 
-              << valMin  << " et " <<  valMax << endl;
+              << VALMIN  << " et " <<  VALMAX << endl;
          cin.clear();
          cin.ignore(numeric_limits<int>::max(), '\n');
          cin >> valeur;
