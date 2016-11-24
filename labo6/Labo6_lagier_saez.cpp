@@ -89,7 +89,7 @@ int getDecimales (const double NOMBRE);
  Retourne une chaine de caractères en français quand elle reçoit un nombre allant
  * de 0 à 9 et de 11 à 16. Ce sont les bases du comptage et les cas particuliers.
  
- @param CHIFFREreçoit le nombre(int) entre 1 et 16, 10 exclu dont on veut récupérer sa 
+ @param CHIFFRE reçoit le nombre(int) entre 1 et 16, 10 exclu dont on veut récupérer sa 
  *      chaîne de caractères.
  @return la chaine de caractère du chiffre reçu en paramètre.
  */
@@ -98,7 +98,7 @@ string uniteToString(const int CHIFFRE);
 /**
  Fonction qui traite un nombre et retourne sa chaine de caractère en dizaine
  
- @param NOMBREreçoit le nombre(int) encodé qui correspond à sa valeur en dizaine
+ @param NOMBRE reçoit le nombre(int) encodé qui correspond à sa valeur en dizaine
  *      (voir details)
  @return la dizaine correspondant sous forme de string.
  \details
@@ -112,8 +112,8 @@ string dizaineToString(const int NOMBRE);
  *  
  @param BLOC reçoit le bloc de chiffre que l'on veut traiter
  @param MILLIERS reçoit un boolean pour savoir si c'est un millier qu'on traite ou pas,
- * nous avons dû l'introduire afin de ne pas faire l'accord des centaines lorsque
- * que c'est des centaines de milliers.
+ *      nous avons dû l'introduire afin de ne pas faire l'accord des centaines lorsque
+ *      que c'est des centaines de milliers.
  @return la chaine de caractère traitée avec les mots de liaisons.
  */
 string blocToString(const int BLOC, const bool MILLIERS);
