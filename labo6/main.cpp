@@ -105,6 +105,18 @@ string uniteToString(const int chiffre);
  */
 string dizaineToString(const int nombre);
 
+/**
+ Fonction principale qui écrit les accords de centaines ainsi que les mots de liaisons
+ * tels que "et" ainsi que le trait d'union
+ *  
+ @param reçoit le bloc de chiffre que l'on veut traiter
+ @param reçoit un boolean pour savoir si c'est un millier qu'on traite ou pas,
+ * nous avons dû l'introduire afin de ne pas faire l'accord des centaines lorsque
+ * que c'est des centaines de milliers.
+ @return la chaine de caractère traitée avec les mots de liaisons.
+ */
+string blocToString(const int bloc, const bool milliers);
+
 
 
 int main()
@@ -173,6 +185,7 @@ string dizaineToString(const int nombre)
       default: return "Erreur";
    }
 }
+
 
 string blocToString(const int bloc, const bool milliers)
 {
