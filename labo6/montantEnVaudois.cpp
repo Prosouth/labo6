@@ -6,22 +6,46 @@
 
 using namespace std;
 
+/**
+ Retourne la partie des milliers d'un nombre
+ 
+ @param reçoit le nombre dont on veut extraire les milliers
+ @return la partie décimale d'un nombre en double constant
+ */
 int getMilliers (const double nombre)
 {
    return (int)(nombre / 1000); // retourne le nombre de milliers
 }
 
+
+/**
+ Retourne la partie des centaines d'un nombre
+ 
+ @param reçoit le nombre dont on veut extraire les centaines
+ @return la partie décimale d'un nombre en double constant
+ */
 int getCentaines (const double nombre)
 {
    return ((int)nombre) % 1000; // retourne le nombre de centaines
 }
 
+/**
+ Retourne la partie décimale d'un nombre
+ 
+ @param reçoit le nombre dont on veut extraire la partie décimale
+ @return la partie décimale d'un nombre en double constant
+ */
 int getDecimales (const double nombre)
 {
    return (int)round(nombre * 100) % 100; // retourne la partie décimale
 }
 
-// Cette fonction retourne la représentation française d'un chiffre non nul
+/**
+ Retourne les valeurs décimales
+ 
+ @param reçoit le nombre dont on veut extraire la partie décimale
+ @return la partie décimale d'un nombre en double
+ */
 string uniteToString(const int chiffre)
 {
    switch(chiffre)
@@ -46,7 +70,12 @@ string uniteToString(const int chiffre)
    }
 }
    
-// Cette fonction retourne la representation francaise d'un chiffre representant une dizaine. 
+/**
+ Retourne les valeurs décimales
+ 
+ @param reçoit le nombre dont on veut extraire la partie décimale
+ @return la partie décimale d'un nombre en double
+ */
 string dizaineToString(const int nombre)
    {
       switch(nombre)
@@ -76,15 +105,15 @@ string dizaineToString(const int nombre)
       {
          resultat += "cent";
       }
-      else if(centaine != 0 && !reste && centaine < 10 && !milliers)
+      else if(centaine && !reste && centaine < 10 && !milliers)
       {
          resultat += uniteToString(centaine) + " cents";    
       }
-      else if(centaine != 0 && reste != 0 )
+      else if(milliers && centaine || centaine && reste)
       {
          resultat += uniteToString(centaine) + " cent"; 
       }
-      if((reste != 0) && (centaine != 0))
+      if((reste != 0) && (centaine))
       {
          resultat += " ";
       }
