@@ -27,8 +27,8 @@ using namespace std;
 
 // Constantes
 const double BORNE_INFERIEURE = 0,
-             BORNE_SUPERIEURE = 999999.99,
-             MILLE = 1000,
+             BORNE_SUPERIEURE = 999999.99;
+const int    MILLE = 1000,
              CENT = 100,
              DIX = 10;
 
@@ -118,7 +118,6 @@ string dizaineToString(const int nombre);
 string blocToString(const int bloc, const bool milliers);
 
 
-
 int main()
 {
     double d;
@@ -193,24 +192,30 @@ string blocToString(const int bloc, const bool milliers)
    int reste = bloc % CENT;
    int centaine = bloc / CENT;
 
-   //on ecrit les centaines
+   // s'il n'y a qu'une centaine, on écrit cent 
    if(centaine == 1)
    {
       resultat += "cent";
    }
+   // sinon si la centaines est plus petite que 10 et qu'il y'a pas de reste et qu'on
+   // est pas dans les milliers, on accorde cents
    else if(centaine && !reste && centaine < 10 && !milliers)
    {
       resultat += uniteToString(centaine) + " cents";    
    }
+   // sinon si les on est dans les milliers OU qu'on a une centaine avec un reste,
+   // on écrit cent sans accorder
    else if((milliers && centaine) || (centaine && reste))
    {
       resultat += uniteToString(centaine) + " cent"; 
    }
-   if((reste != 0) && (centaine))
+   // s'il existe un reste et qu'il reste des centaines, on met un espace en prévision
+   // d'écrire la suite.
+   if((reste) && (centaine))
    {
       resultat += " ";
    }
-   //on ecrit les dizaines et les unités
+   // Si le reste est inférieur à 11 ou supérieur à 16, on doit le traiter.
    if(reste < 11 || reste > 16)
    {
       int dizaine = reste / DIX;
