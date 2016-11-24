@@ -35,7 +35,7 @@ const int    MILLE = 1000,
 
 /**
     \brief Traduit des nombres réels en prix exprimés en vaudois
-    \param[in] montant un réel compris entre 0 et 999999.99 CHF.
+    \param[in] MONTANT un réel compris entre 0 et 999999.99 CHF.
     \return une chaine de caractères indiquant en vaudois le prix
     en francs et centimes.
     \details Exemples:
