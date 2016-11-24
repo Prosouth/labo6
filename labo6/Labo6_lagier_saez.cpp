@@ -12,7 +12,7 @@
  *             canton de Vaud, donc septante, huitante et nonante pour 70, 80 et 90.
 
  Remarque(s) : La saisie utilisateur est vérifiée et renvoie un message d'erreur
- *             si la saise est fausse.
+ *             si la saise est fausse. On utilise ctrl+c pour terminer le programme.
 
  Compilateur : g++ 6.2.1 20160830
  -----------------------------------------------------------------------------------
@@ -240,16 +240,19 @@ string blocToString(const int bloc, const bool milliers)
                resultat += dizaineString + "-" + uniteString;
             }
          }
+         // sinon on écrit la dizaine
          else
          {
             resultat += dizaineString;
          }
       }
+      // sinon on écrit les unités uniquement
       else 
       {
          resultat += uniteString;
       }
    }
+   // sinon on traite le reste
    else
    {
       resultat += uniteToString(reste);
@@ -269,21 +272,25 @@ string montantEnVaudois(const double montant)
    string centainesString = blocToString(centaines, false);
    string decimalesString = blocToString(decimales, false);
 
+   // S'il n'y a qu'un millier, on écrit mille
    if(milliers == 1)
    {
       resultat += "mille ";
    }
+   // sinon on écrit les milliers avec ce qui s'ensuit, les centaines 
    else if(milliers)
    {
       resultat += milliersString + " mille ";
    }
    resultat += centainesString;
+   // Si on a pas de milliers, ni de centaines, ni de décimales, c'est qu'on a zéro
    if((!milliers) && (!centaines) && (!decimales))
    {
       resultat += "zero franc";
    }
-   else 
+   else  // sinon on doit traiter
    {
+      // si on a des milliers
       if((milliers) || (centaines))
       {
          resultat += " franc";
@@ -296,13 +303,16 @@ string montantEnVaudois(const double montant)
 
    if(decimales)
    {
+      // S'il y'a des milliers ou des centaines, on doit rajouter un et pour écrire
+      // les centimes.
       if (milliers || centaines)
       {
          resultat += " et ";
       }
-
+      
       resultat += decimalesString + " centime";
 
+      // si les décimales sont supérieures à 1, on doit rajouter un s.
       if (decimales > 1)
       {
          resultat += "s";
